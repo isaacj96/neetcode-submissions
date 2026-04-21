@@ -1,0 +1,22 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        i = 0
+        j = len(s) - 1
+        while i < j:
+            # print(f"s[i]: {s[i]}\ns[j]: {s}")
+            while i < j and not self.checkChar(s[i]):
+                i += 1
+            
+            while j > i and not self.checkChar(s[j]):
+                j -= 1
+            
+            if s[i].lower() != s[j].lower():
+                return False
+            i += 1
+            j -= 1
+        return True
+
+    def checkChar(self, c):
+        return (ord('A') <= ord(c) <= ord('Z') or
+                ord('a') <= ord(c) <= ord('z') or
+                ord('0') <= ord(c) <= ord('9'))
